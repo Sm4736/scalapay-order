@@ -1,0 +1,53 @@
+<main>
+  <!-- The main order form.  -->
+  <div id="order-form">
+    <h1>Order Information</h1>
+    <form [formGroup]="orderForm" (ngSubmit)="onSubmit()">
+      <div id="address-details" formGroupName="customer">
+        <label for="given-names">First Name</label>
+        <input id="given-names" type="text" formControlName="givenNames">
+        <label for="surname">Surname</label>
+        <input id="surname" type="text" formControlName="surname">
+        <label for="email">Email</label>
+        <input id="email" type="email" formControlName="email">
+        <label for="phone-number">Phone Number</label>
+        <input id="phone-number" type="tel" formControlName="phoneNumber">
+      </div>
+      <div id="shipping-details" formGroupName="address">
+        <label for="line1">Address</label>
+        <input id="line1" type="text" formControlName="line1">
+        <label for="suburb">Suburb</label>
+        <input id="suburb" type="text" formControlName="suburb">
+        <label for="postcode">Postcode</label>
+        <input id="postcode" type="text" formControlName="postcode">
+        <label for="country-code">Country</label>
+        <select id="country-code" formControlName="countryCode">
+          <option value="IT">Italy</option>
+        </select>
+      </div>
+      <div id="payment-details">
+
+      </div>
+      <button type="submit" [disabled]="!orderForm.valid">Proceed to payment</button>
+    </form>
+  </div>
+  <!--  A display only cart.-->
+  <div id="cart">
+    <div id="productList">
+      <h2>Your order</h2>
+      <div class="product" *ngFor="let item of cart.products">
+        <div class="product-name">{{item.name}}</div>
+        <div class="product-sku">{{item.sku}}</div>
+        <div class="product-price">{{item.amount}} {{item.currency}}</div>
+      </div>
+    </div>
+    <div id="total-price">
+      <div id="subtotal">
+        <span class="bold">Total: </span>
+        <span *ngIf="cart">
+          {{cart.amount}} {{cart.currency}}
+        </span>
+      </div>
+    </div>
+  </div>
+</main>
