@@ -6,27 +6,52 @@
       <div id="address-details" formGroupName="customer">
         <label for="given-names">First Name</label>
         <input id="given-names" type="text" formControlName="givenNames">
+        <div class="validation-error"
+             *ngIf="!(orderForm.get('customer.givenNames')?.valid || orderForm.get('customer.givenNames')?.pristine)">
+          This field is required.
+        </div>
         <label for="surname">Surname</label>
         <input id="surname" type="text" formControlName="surname">
+        <div class="validation-error"
+             *ngIf="!(orderForm.get('customer.surname')?.valid || orderForm.get('customer.surname')?.pristine)">
+          This field is required.
+        </div>
         <label for="email">Email</label>
         <input id="email" type="email" formControlName="email">
+        <div class="validation-error"
+             *ngIf="!(orderForm.get('customer.email')?.valid || orderForm.get('customer.email')?.pristine)">
+          Email must be a valid email address.
+        </div>
         <label for="phone-number">Phone Number</label>
         <input id="phone-number" type="tel" formControlName="phoneNumber">
+        <div class="validation-error"
+             *ngIf="!(orderForm.get('customer.phoneNumber')?.valid || orderForm.get('customer.phoneNumber')?.pristine)">
+          This field is required.
+        </div>
       </div>
       <div id="shipping-details" formGroupName="address">
         <label for="line1">Address</label>
         <input id="line1" type="text" formControlName="line1">
+        <div class="validation-error"
+             *ngIf="!(orderForm.get('address.line1')?.valid || orderForm.get('address.line1')?.pristine)">
+          This field is required.
+        </div>
         <label for="suburb">Suburb</label>
         <input id="suburb" type="text" formControlName="suburb">
+        <div class="validation-error"
+             *ngIf="!(orderForm.get('address.suburb')?.valid || orderForm.get('address.suburb')?.pristine)">
+          This field is required.
+        </div>
         <label for="postcode">Postcode</label>
         <input id="postcode" type="text" formControlName="postcode">
+        <div class="validation-error"
+             *ngIf="!(orderForm.get('address.postcode')?.valid || orderForm.get('address.postcode')?.pristine)">
+          This field is required.
+        </div>
         <label for="country-code">Country</label>
         <select id="country-code" formControlName="countryCode">
           <option value="IT">Italy</option>
         </select>
-      </div>
-      <div id="payment-details">
-
       </div>
       <button type="submit" [disabled]="!orderForm.valid">Proceed to payment</button>
     </form>

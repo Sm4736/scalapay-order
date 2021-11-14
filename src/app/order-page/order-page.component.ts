@@ -53,7 +53,7 @@ export class OrderPageComponent implements OnInit {
       customer: this.fb.group({
         givenNames: ['', Validators.required],
         surname: ['', Validators.required],
-        email: ['', Validators.required],
+        email: ['', [Validators.required, Validators.email]],
         phoneNumber: ['', Validators.required],
       }),
       address: this.fb.group({
